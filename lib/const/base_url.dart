@@ -1,5 +1,6 @@
 class EndPoint {
   static const baseApiUrl = 'https://restaurant-api.dicoding.dev';
+  static const baseApiUrl2 = 'www.restaurant-api.dicoding.dev';
   static const restaurantList = '/list';
   static const restaurantDetails = '/detail/:id';
   static const restaurantSearch = '/search?q=query';

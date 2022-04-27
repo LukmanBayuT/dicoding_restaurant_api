@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:restaurantsapp/const/base_url.dart';
 import 'package:restaurantsapp/const/constant.dart';
 import 'package:restaurantsapp/service/provider_service.dart';
+import 'package:restaurantsapp/service/secure_storage.dart';
 import 'package:restaurantsapp/views/detailed_pages.dart';
 
 class HomePages extends StatefulWidget {
@@ -15,6 +16,7 @@ class HomePages extends StatefulWidget {
 }
 
 class _HomePagesState extends State<HomePages> with ChangeNotifier {
+  SecureStorage secureStorage = SecureStorage();
   @override
   void initState() {
     final postModel = Provider.of<DataClass>(context, listen: false);
@@ -47,7 +49,9 @@ class _HomePagesState extends State<HomePages> with ChangeNotifier {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.to(() => DetailedPages(data: postModel.post));
+                    Get.to(() => DetailedPages(
+                        data:
+                            postModel.post?.restaurants![index].id.toString()));
                   },
                   child: Card(
                     child: Padding(

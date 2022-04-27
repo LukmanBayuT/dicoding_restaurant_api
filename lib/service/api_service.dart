@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:restaurantsapp/const/base_url.dart';
+import 'package:restaurantsapp/models/restaurant_detail_models.dart';
 import 'package:restaurantsapp/models/restaurant_list_models.dart';
 
 class ApiServiceRestaurant {
@@ -25,23 +26,23 @@ class ApiServiceRestaurant {
     return restaurantList;
   }
 
-  Future<RestaurantsList?> getRestaurantDetails() async {
-    RestaurantsList? restaurantList;
+  Future<RestaurantDetails?> getRestaurantDetails(String id) async {
+    RestaurantDetails? restaurantDetails;
 
     try {
-      final response = await http
-          .get(Uri.parse(EndPoint.baseApiUrl + EndPoint.restaurantList));
+      final response =
+          await http.get(Uri.parse(EndPoint.baseApiUrl + '/detail/$id'));
       if (kDebugMode) {
         print(response.body);
       }
       if (response.statusCode == 200) {
-        return restaurantList = restaurantsListFromJson(response.body);
+        return restaurantDetails = restaurantDetailsFromJson(response.body);
       } else {
         if (kDebugMode) {
           print('connection issue');
         }
       }
     } catch (e) {}
-    return restaurantList;
+    return restaurantDetails;
   }
 }
