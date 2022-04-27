@@ -18,6 +18,25 @@ class ApiServiceRestaurant {
       if (response.statusCode == 200) {
         return restaurantList = restaurantsListFromJson(response.body);
       } else {
+        Future.delayed(const Duration(seconds: 1))
+            .then((value) => getRestaurantList());
+      }
+    } catch (e) {}
+    return restaurantList;
+  }
+
+  Future<RestaurantsList?> getRestaurantDetails() async {
+    RestaurantsList? restaurantList;
+
+    try {
+      final response = await http
+          .get(Uri.parse(EndPoint.baseApiUrl + EndPoint.restaurantList));
+      if (kDebugMode) {
+        print(response.body);
+      }
+      if (response.statusCode == 200) {
+        return restaurantList = restaurantsListFromJson(response.body);
+      } else {
         if (kDebugMode) {
           print('connection issue');
         }

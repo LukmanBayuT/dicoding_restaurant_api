@@ -8,7 +8,7 @@ class DataClass extends ChangeNotifier {
 
   getPostData() async {
     loading = true;
-    post = (await ApiServiceRestaurant().getRestaurantList())!;
+    post = await ApiServiceRestaurant().getRestaurantList();
     loading = false;
 
     notifyListeners();

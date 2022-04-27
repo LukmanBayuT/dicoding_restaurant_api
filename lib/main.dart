@@ -12,8 +12,10 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => DataClass(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => DataClass()),
+      ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Restaurants With Provider',
