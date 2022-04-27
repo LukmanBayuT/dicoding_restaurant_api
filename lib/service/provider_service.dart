@@ -13,10 +13,4 @@ class DataClass extends ChangeNotifier {
 
     notifyListeners();
   }
-
-  getDetailedData() async {
-    loading = true;
-    post = await ApiServiceRestaurant().getRestaurantList();
-    loading = false;
-  }
 }

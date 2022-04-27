@@ -27,22 +27,11 @@ class ApiServiceRestaurant {
   }
 
   Future<RestaurantDetails?> getRestaurantDetails(String id) async {
-    RestaurantDetails? restaurantDetails;
-
-    try {
-      final response =
-          await http.get(Uri.parse(EndPoint.baseApiUrl + '/detail/$id'));
-      if (kDebugMode) {
-        print(response.body);
-      }
-      if (response.statusCode == 200) {
-        return restaurantDetails = restaurantDetailsFromJson(response.body);
-      } else {
-        if (kDebugMode) {
-          print('connection issue');
-        }
-      }
-    } catch (e) {}
-    return restaurantDetails;
+    final response =
+        await http.get(Uri.parse(EndPoint.baseApiUrl + '/detail/$id'));
+    if (kDebugMode) {
+      print(response.body);
+    }
+    return restaurantDetailsFromJson(response.body);
   }
 }
