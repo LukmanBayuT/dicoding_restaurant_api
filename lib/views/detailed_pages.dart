@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:restaurantsapp/const/constant.dart';
 import 'package:restaurantsapp/models/restaurant_detail_models.dart';
 import 'package:restaurantsapp/service/api_service.dart';
-import 'package:restaurantsapp/service/secure_storage.dart';
 
 class DetailedPages extends StatefulWidget {
   String? data;
@@ -14,7 +13,6 @@ class DetailedPages extends StatefulWidget {
 }
 
 class _DetailedPagesState extends State<DetailedPages> {
-  SecureStorage secureStorage = SecureStorage();
   @override
   void initState() {
     super.initState();
@@ -30,10 +28,14 @@ class _DetailedPagesState extends State<DetailedPages> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return ElevatedButton(
               onPressed: () {
-                print(snapshot.data);
+                if (snapshot.data != null) {
+                  print(snapshot.data.restaurant.id);
+                } else {
+                  print('tidak ada data');
+                }
               },
               child: Text(
-                'check',
+                'Lafayete',
                 style: h1Black,
               ));
         },

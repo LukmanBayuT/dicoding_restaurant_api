@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurantsapp/const/base_url.dart';
 import 'package:restaurantsapp/const/constant.dart';
+import 'package:restaurantsapp/service/api_service.dart';
 import 'package:restaurantsapp/service/provider_service.dart';
 import 'package:restaurantsapp/service/secure_storage.dart';
 import 'package:restaurantsapp/views/detailed_pages.dart';
