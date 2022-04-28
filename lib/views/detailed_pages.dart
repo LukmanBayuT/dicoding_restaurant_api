@@ -26,10 +26,11 @@ class _DetailedPagesState extends State<DetailedPages> {
         future:
             ApiServiceRestaurant().getRestaurantDetails(widget.data.toString()),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
+          var detail = snapshot.data.restaurant;
           return ElevatedButton(
               onPressed: () {
                 if (snapshot.data != null) {
-                  print(snapshot.data.restaurant.id);
+                  print(detail.name);
                 } else {
                   print('tidak ada data');
                 }
