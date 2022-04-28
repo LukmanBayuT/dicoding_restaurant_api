@@ -51,8 +51,9 @@ class _HomePagesState extends State<HomePages> with ChangeNotifier {
                 return GestureDetector(
                   onTap: () {
                     Get.to(() => DetailedPages(
-                        data:
-                            postModel.post?.restaurants![index].id.toString()));
+                        data: postModel.post?.restaurants![index].id.toString(),
+                        pict: postModel.post!.restaurants![index].pictureId
+                            .toString()));
                   },
                   child: Card(
                     child: Padding(
