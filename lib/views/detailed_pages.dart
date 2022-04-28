@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:restaurantsapp/const/base_url.dart';
 import 'package:restaurantsapp/const/constant.dart';
 import 'package:restaurantsapp/models/restaurant_detail_models.dart';
@@ -16,11 +17,10 @@ class DetailedPages extends StatefulWidget {
 }
 
 class _DetailedPagesState extends State<DetailedPages> {
-  @override
-  void initState() {
-    super.initState();
-    // ApiServiceRestaurant().getRestaurantDetails(widget.data.toString());
-  }
+  var spinkit = const SpinKitRotatingCircle(
+    color: Colors.amber,
+    size: 50.0,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +43,8 @@ class _DetailedPagesState extends State<DetailedPages> {
               ],
             );
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Center(
+              child: spinkit,
             );
           }
         },
